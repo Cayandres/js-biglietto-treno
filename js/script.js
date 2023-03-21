@@ -31,8 +31,10 @@ let outputmessage = "" ;
 
 if(etàPassegero < minorenne){
   outputmessage = scontoGiovani
-}else if  (etàPassegero > anzianità){
+} else if  (etàPassegero > anzianità){
   outputmessage = scontoAnziani
+} else {
+  outputmessage = calcoloKm
 }
 
 
