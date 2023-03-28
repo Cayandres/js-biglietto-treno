@@ -1,47 +1,42 @@
 const numeroKilometri = prompt("Quanti kilometri devi percorrere?")
-const etàPassegero = prompt("Quanti anni hai?")
-
-console.log(numeroKilometri,etàPassegero);
+const age = prompt("Quanti anni hai?")
 
 let prezzoAlKm = 0.21;
 
-let calcoloKm = (numeroKilometri) * prezzoAlKm;
+let calcoloKm = numeroKilometri * prezzoAlKm;
 
-const scontoVenti = (calcoloKm) / 100 * 20;
+const scontoVenti = calcoloKm / 100 * 20;
 console.log(scontoVenti)
 
-const scontoQuaranta = (calcoloKm) / 100 * 40;
+const scontoQuaranta = calcoloKm / 100 * 40;
 console.log(scontoQuaranta)
 
-const minorenne = 18;
+if(age < 18){
 
-const anzianità = 65;
-
-
-
-
-let scontoGiovani = (calcoloKm) - scontoVenti;
-
-console.log(scontoGiovani);
-
-let scontoAnziani = (calcoloKm) - scontoQuaranta;
-console.log(scontoAnziani);
-
-let outputmessage = "" ;
-
-if(etàPassegero < minorenne){
+  scontoGiovani = calcoloKm - scontoVenti;  
   outputmessage = scontoGiovani
-} else if  (etàPassegero > anzianità){
+
+} else if  (age >= 65){
+  
+  scontoAnziani = calcoloKm - scontoQuaranta;
   outputmessage = scontoAnziani
+
 } else {
   outputmessage = calcoloKm
 }
 
+if(age < 18){
+
+  message = `Hai usufruito dello sconto giovani. Devi pagare <br>
+  ${scontoGiovani. toFixed(2)}`
+
+} else if  (age >= 65){
+  
+  message = `Hai usufruito dello sconto senior. Devi pagare <br> ${scontoAnziani. toFixed(2)}`
+
+} else {
+  message = `Non hai l'età per beneficiare dello sconto, il costo del tuo biglietto è <br> ${calcoloKm. toFixed(2)}`
+}
 
 
-document.getElementById("header").innerHTML = outputmessage.toFixed(2);
-
-
-
-
-
+document.getElementById("header").innerHTML = message;
